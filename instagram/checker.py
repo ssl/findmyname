@@ -16,7 +16,7 @@ from utils.checker_utils import CheckerUtils
 config = ConfigLoader.load_config('instagram')
 
 # Custom Regex for valid usernames (a-z, 0-9, .)
-valid_pattern = re.compile(r'^[a-z0-9.]+$')
+valid_pattern = re.compile(r'^(?!\.)(?!.*\.\.)(?!.*^\d+$)[a-z0-9.]+(?<!\.)$')
 
 # Proxy Management
 def get_random_proxy():

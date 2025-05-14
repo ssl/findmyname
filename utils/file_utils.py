@@ -247,8 +247,5 @@ class FileUtils:
         
         # Apply additional filters
         filtered_usernames = [u for u in filtered_usernames if len(u) >= min_length and len(u) <= max_length]
-        filtered_usernames = [u for u in filtered_usernames if (u[0].isalpha() or u[0].isdigit()) and (u[-1].isalpha() or u[-1].isdigit())]
-        filtered_usernames = [u for u in filtered_usernames if not u.isdigit() and not u[0].isdigit()]
-        filtered_usernames = [u for u in filtered_usernames if u.count('..') == 0 and not u.endswith('.') and not u.startswith('.')]
         
         return filtered_usernames 
