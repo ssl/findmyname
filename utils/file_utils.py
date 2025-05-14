@@ -47,7 +47,7 @@ class FileUtils:
                     with open(file_path, 'r') as f:
                         all_lines.extend(f.readlines())
                 except Exception as e:
-                    print(Fore.RED + f"Error reading {file_path}: {e}")
+                    pass
         return all_lines
     
     @staticmethod
@@ -186,7 +186,7 @@ class FileUtils:
                         total_unavailable = sum(1 for line in f if line.strip())
                     
                     print(Fore.CYAN + f"Progress: {checked_items}/{total_items} ({progress_percent:.2f}%) | "
-                          f"TA: {total_available} | TU: {total_unavailable} | Speed: {speed:.2f} items/sec | {eta_str}")
+                          f"TA: {total_available} | TU: {total_unavailable} | Speed: {speed:.2f} names/sec | {eta_str}")
                     
                     if checked_items >= total_items:
                         break

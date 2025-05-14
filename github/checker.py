@@ -4,6 +4,7 @@ import sys
 import os
 import re
 import time
+import hashlib
 
 # Get the directory where the script is located
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -17,11 +18,13 @@ from utils.checker_utils import CheckerUtils
 config = ConfigLoader.load_config('github')
 
 # Custom Regex for valid GitHub usernames (a-z, 0-9, hyphen, cannot start or end with hyphen)
-valid_pattern = re.compile(r'^[a-z0-9](?:[a-z0-9]|-(?=[a-z0-9])){0,38}$')
+# valid_pattern = re.compile(r'^[a-z0-9](?:[a-z0-9]|-(?=[a-z0-9])){0,38}$')
+valid_pattern = re.compile(r'^[a-z0-9]{0,3}$')
 
 def check_github_page(username):
     """
-    Check if a username is available on GitHub by checking the profile page.
+    Check if a username is available on GitHub by checking the avatar image.
+    If the avatar is the same as the default avatar, the username is available.
     
     Args:
         username (str): Username to check
@@ -33,33 +36,21 @@ def check_github_page(username):
     headers = CaseInsensitiveDict()
     headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
     
-    # GitHub profile page URL
-    profile_url = f"https://gist.github.com/{username}"
+    # GitHub avatar URL
+    avatar_url = f"https://avatars.githubusercontent.com/{username}?s=1"
 
     keep_trying = True
     while keep_trying:
         try:
-            resp = requests.get(profile_url, headers=headers, timeout=config.get('timeout_seconds', 30))
-        
-            # If we get a 404 status code, the username is available
-            if resp.status_code == 404:
-                keep_trying = False
-                return True
+            resp = requests.get(avatar_url, headers=headers, timeout=10)
             
-            # If we get a 200 status code, the username is taken
+            # If we get a 200 status code, check if the avatar is the default one
             if resp.status_code == 200:
                 keep_trying = False
-                return False
-            
-            # If we get a 400 status code, the username is unavailable
-            if resp.status_code == 400:
-                keep_trying = False
-                return False
-            
-            # If we get a 429 status we're rate limited
-            if resp.status_code == 429:
-                time.sleep(10)
-                raise Exception("Rate limit exceeded")
+                # Calculate hash of the response content
+                avatar_hash = hashlib.md5(resp.content).hexdigest()
+                # If the hash matches the default avatar, the username is available
+                return avatar_hash == '2785b1bedaed3962692a1850a4c50faa'
             
             # For other status codes, raise an exception
             resp.raise_for_status()
