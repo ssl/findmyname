@@ -1,0 +1,19 @@
+{
+  "tools": {
+    "steam": {
+      "input": "input.txt",
+      "max_threads": 10,
+      "min_length": 5,
+      "max_length": 6,
+      "batch_size": 1000
+    },
+    "instagram": {
+      "input": "/Users/ssl/Projects/SecCollection/Wordlists/Dutch/",
+      "max_threads": 800,
+      "batch_size": 2500,
+      "min_length": 5,
+      "max_length": 6,
+      "proxy": "user:pass@host:823"
+    }
+  }
+}
