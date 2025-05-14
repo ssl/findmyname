@@ -16,9 +16,8 @@ Important: the tool tries to get a new proxy connection if the result is not cer
 ## Proxy Management
 High-quality, preferable residential proxies are needed to bypass ratelimits. 1 GB gives about 100.000 username checks.
 
-For best results, use a proxy with a single connection, that provides a new IP on every connection.
+For best results, use a proxy with a single connection, that provides a new IP on every connection. If you want to use a proxy list to rotate instead, edit the `get_random_proxy()` function.
 
 Some cheap options;
-- https://proxyguys.com
 - https://www.lunaproxy.com/pricing/rotating-isp-proxies/
 - https://dataimpulse.com
