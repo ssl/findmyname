@@ -27,7 +27,10 @@ class CheckerUtils:
             None
         """
         # Get configuration values
-        input_list = config.get('input', 'input.txt')
+        repo_root = os.path.dirname(script_dir)
+        default_input = os.path.join(repo_root, 'lists/')
+
+        input_list = config.get('input', default_input)
         input_threads = config.get('max_threads', 10)
         batch_size = config.get('batch_size', 1000)
         

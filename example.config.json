@@ -15,10 +15,8 @@
       "proxy": "user:pass@host:823"
     },
     "github": {
-      "input": "input.txt",
-      "max_threads": 4,
       "min_length": 3,
-      "max_length": 39
+      "max_length": 20
     }
   }
 }
