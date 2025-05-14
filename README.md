@@ -1,6 +1,3 @@
-Here’s a clean, concise, and stylish GitHub README for your "findmyname" project:
-
-
 # findmyname
 
 **Check username availability on various websites including:**
@@ -8,7 +5,7 @@ Here’s a clean, concise, and stylish GitHub README for your "findmyname" proje
 - Steam
 - GitHub
 
-The `findmyname` project includes a set of username checkers, each in its own directory with a dedicated README. All tools use shared utilities, ensuring consistent functionality and making it easy to add new websites.
+The findmyname project includes a set of username checkers, each in its own directory with a dedicated README. All tools use shared utilities, ensuring consistent functionality and making it easy to add new websites.
 
 - **Tool-Specific Features**: Each tool operates independently. Some leverage proxies while others implement smart techniques to bypass rate limits.
 - **Shared Utilities**: The `utils/` folder contains core functions used by all checkers, streamlining tasks like input validation and output handling.
