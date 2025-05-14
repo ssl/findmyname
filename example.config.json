@@ -4,8 +4,7 @@
       "input": "input.txt",
       "max_threads": 10,
       "min_length": 5,
-      "max_length": 6,
-      "batch_size": 1000
+      "max_length": 6
     },
     "instagram": {
       "input": "/Users/ssl/Projects/SecCollection/Wordlists/Dutch/",
@@ -14,6 +13,12 @@
       "min_length": 5,
       "max_length": 6,
       "proxy": "user:pass@host:823"
+    },
+    "github": {
+      "input": "input.txt",
+      "max_threads": 4,
+      "min_length": 3,
+      "max_length": 39
     }
   }
 }

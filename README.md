@@ -5,6 +5,7 @@ findmyname is a collection of username checkers for various sites
 
 ### Instagram
 ### Steam
+### GitHub
 
 ## Configuration
 
@@ -27,9 +28,9 @@ python steam/checker.py
 ```
 
 Input files are automatically stripped of;
-- Usernames that are invalid per site rules
-- Usernames already checked (available/unavailable from previous tests)
-- Too short/long from config file
+- If invalid per site rules
+- If already checked (available/unavailable from previous runs)
+- If too short/long from config file
 - Dublicates in file
 
 ## Output
